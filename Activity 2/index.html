@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Morning or Night?</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="game">
+    <h1><span>Morning ☀️</span> or <span>Night 🌙</span>?</h1>
+    <p id="time-message">Check the time of day to begin.</p>
+
+    <button id="check-button">Check time of day</button>
+
+    <div class="choices">
+      <button id="sunscreen-button" disabled>Apply sunscreen 🧴</button>
+      <button id="sleep-mask-button" disabled>Apply sleep mask 😴</button>
+    </div>
+
+    <p id="feedback" aria-live="polite"></p>
+    <p>Correct choices: <span id="score">0</span></p>
+    <button id="reset-button">Reset score</button>
+  </main>
+</body>
+</html>
