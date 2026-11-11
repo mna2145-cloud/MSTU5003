@@ -22,11 +22,17 @@ function addLog(message) {
   const item = document.createElement("li");
   item.textContent = message;
   log.prepend(item);
-  while (log.children.length > 8) log.lastElementChild.remove();
+
+  while (log.children.length > 8) {
+    log.lastElementChild.remove();
+  }
 }
 
 function clampTemperature(value) {
-  return Math.min(MAX_TEMPERATURE, Math.max(MIN_TEMPERATURE, value));
+  return Math.min(
+    MAX_TEMPERATURE,
+    Math.max(MIN_TEMPERATURE, value)
+  );
 }
 
 function playBeep() {
@@ -34,9 +40,11 @@ function playBeep() {
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!AudioContext) return;
+
     const audio = new AudioContext();
     const oscillator = audio.createOscillator();
     const volume = audio.createGain();
+
     oscillator.frequency.value = 880;
     volume.gain.value = 0.12;
     oscillator.connect(volume);
@@ -52,6 +60,7 @@ function playBeep() {
 function arriveAtTarget() {
   state = "Maintain";
   heaterOn = false;
+
   if (!readyBeepSent) {
     readyBeepSent = true;
     beepText.textContent = "Sounded";
@@ -77,6 +86,7 @@ function setTarget(newTarget) {
     arriveAtTarget();
     addLog(`Target set to ${target}°. Already within range.`);
   }
+
   render();
 }
 
@@ -84,6 +94,7 @@ function tick() {
   if (state === "Warming") {
     heaterOn = true;
     temperature = clampTemperature(temperature + 10);
+
     if (temperature >= target - READY_TOLERANCE) {
       temperature = Math.min(temperature, target);
       arriveAtTarget();
@@ -91,10 +102,17 @@ function tick() {
   } else if (state === "Cooling") {
     heaterOn = false;
     temperature = clampTemperature(temperature - 2);
-    if (target !== null && temperature <= target + READY_TOLERANCE) {
+
+    if (
+      target !== null &&
+      temperature <= target + READY_TOLERANCE
+    ) {
       temperature = Math.max(temperature, target);
       arriveAtTarget();
-    } else if (target === null && temperature <= MIN_TEMPERATURE) {
+    } else if (
+      target === null &&
+      temperature <= MIN_TEMPERATURE
+    ) {
       state = "Idle";
       addLog("Oven cooled to room temperature. Idle.");
     }
@@ -110,6 +128,7 @@ function tick() {
       heaterOn = false;
     }
   }
+
   render();
 }
 
@@ -119,25 +138,37 @@ function render() {
   temperatureText.textContent = Math.round(temperature);
   heaterText.textContent = heaterOn ? "ON" : "OFF";
 
-  const percent = ((temperature - MIN_TEMPERATURE) / (MAX_TEMPERATURE - MIN_TEMPERATURE)) * 100;
+  const percent =
+    ((temperature - MIN_TEMPERATURE) /
+      (MAX_TEMPERATURE - MIN_TEMPERATURE)) *
+    100;
+
   fill.style.width = `${percent}%`;
   marker.style.left = `calc(${percent}% - 2px)`;
 }
 
 document.querySelector("#target-form").addEventListener("submit", (event) => {
   event.preventDefault();
+
   const newTarget = Number(targetInput.value);
-  if (Number.isFinite(newTarget) && newTarget >= MIN_TEMPERATURE && newTarget <= MAX_TEMPERATURE) {
+  const targetIsInRange =
+    Number.isFinite(newTarget) &&
+    newTarget >= MIN_TEMPERATURE &&
+    newTarget <= MAX_TEMPERATURE;
+
+  if (targetIsInRange) {
     setTarget(newTarget);
   }
 });
 
 document.querySelector("#cancel-button").addEventListener("click", () => {
   if (target === null && state === "Idle") return;
+
   target = null;
   readyBeepSent = false;
   beepText.textContent = "Not sounded";
   heaterOn = false;
+
   if (temperature > MIN_TEMPERATURE) {
     state = "Cooling";
     addLog("Target canceled. Cooling to room temperature.");
@@ -145,6 +176,7 @@ document.querySelector("#cancel-button").addEventListener("click", () => {
     state = "Idle";
     addLog("Target canceled. Idle at room temperature.");
   }
+
   render();
 });
 
