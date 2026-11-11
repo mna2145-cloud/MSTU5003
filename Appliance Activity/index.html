@@ -1,48 +1,72 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Oven Temperature Model</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <main class="oven-model">
-    <h1>Oven Temperature Model</h1>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oven Temperature Model</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="oven-model">
+      <h1>Oven Temperature Model</h1>
 
-    <section class="readings" aria-live="polite">
-      <p><strong>State:</strong> <span id="state">Idle</span></p>
-      <p><strong>Target:</strong> <span id="target-display">None</span></p>
-      <p><strong>Current temperature:</strong> <span id="temperature">70</span>°</p>
-    </section>
+      <section class="readings" aria-live="polite">
+        <p><strong>State:</strong> <span id="state">Idle</span></p>
+        <p><strong>Target:</strong> <span id="target-display">None</span></p>
+        <p>
+          <strong>Current temperature:</strong>
+          <span id="temperature">70</span>°
+        </p>
+      </section>
 
-    <form id="target-form">
-      <label for="target-input">Set target temperature (70°–500°):</label>
-      <div class="controls">
-        <input id="target-input" type="number" min="70" max="500" value="350" required>
-        <button type="submit">Set Target</button>
-        <button id="cancel-button" type="button" class="secondary">Cancel / End Cycle</button>
-      </div>
-    </form>
+      <form id="target-form">
+        <label for="target-input">
+          Set target temperature (70°–500°):
+        </label>
+        <div class="controls">
+          <input
+            id="target-input"
+            type="number"
+            min="70"
+            max="500"
+            value="350"
+            required
+          >
+          <button type="submit">Set Target</button>
+          <button id="cancel-button" type="button" class="secondary">
+            Cancel / End Cycle
+          </button>
+        </div>
+      </form>
 
-    <section class="thermometer" aria-label="Temperature level">
-      <div class="track"><div id="temperature-fill"></div><span id="temperature-marker"></span></div>
-      <div class="scale"><span>70°</span><span>500°</span></div>
-    </section>
+      <section class="thermometer" aria-label="Temperature level">
+        <div class="track">
+          <div id="temperature-fill"></div>
+          <span id="temperature-marker"></span>
+        </div>
+        <div class="scale">
+          <span>70°</span>
+          <span>500°</span>
+        </div>
+      </section>
 
-    <section class="readings status">
-      <p><strong>Heating element:</strong> <span id="heater">OFF</span></p>
-      <p><strong>Ready beep:</strong> <span id="beep-status">Not sounded</span></p>
-    </section>
+      <section class="readings status">
+        <p><strong>Heating element:</strong> <span id="heater">OFF</span></p>
+        <p><strong>Ready beep:</strong> <span id="beep-status">Not sounded</span></p>
+      </section>
 
-    <section class="activity">
-      <h2>Activity log</h2>
-      <ul id="activity-log" aria-live="polite">
-        <li>Model started in Idle state at 70°.</li>
-      </ul>
-    </section>
-    <p class="note">Temperature changes once per second. Values are simplified for this exercise.</p>
-  </main>
-  <script src="script.js"></script>
-</body>
+      <section class="activity">
+        <h2>Activity log</h2>
+        <ul id="activity-log" aria-live="polite">
+          <li>Model started in Idle state at 70°.</li>
+        </ul>
+      </section>
+
+      <p class="note">
+        Temperature changes once per second. Values are simplified for this
+        exercise.
+      </p>
+    </main>
+    <script src="script.js"></script>
+  </body>
 </html>
