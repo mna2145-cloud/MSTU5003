@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3ead9">
+  <title>Far &amp; Here — a little closer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="masthead">
+      <div>
+          <h1>Far <span>&amp;</span> Here</h1>
+        <p class="tagline">A little closer, even from far away.</p>
+      </div>
+      <div class="header-tools">
+        <p id="today" class="date-stamp"></p>
+        <button id="settings-toggle" class="settings-toggle" type="button" aria-expanded="false" aria-controls="settings-panel">Settings <span aria-hidden="true">＋</span></button>
+      </div>
+    </header>
+
+    <section id="settings-panel" class="settings-panel" hidden aria-label="Settings">
+      <div class="settings-heading"><div><p class="eyebrow">Make it yours</p><h2>A few little details</h2></div><button id="settings-close" class="icon-button" type="button" aria-label="Close settings">×</button></div>
+      <div class="settings-grid">
+        <label>Megan’s city<select id="city-0"></select></label>
+        <label>Andy’s city<select id="city-1"></select></label>
+        <label>Megan’s name<input id="name-0" maxlength="24"></label>
+        <label>Andy’s name<input id="name-1" maxlength="24"></label>
+        <label>Megan’s paper color<select id="color-0"><option value="rose">Blush</option><option value="sage">Sage</option><option value="blue">Faded blue</option><option value="cream">Warm cream</option></select></label>
+        <label>Andy’s paper color<select id="color-1"><option value="blue">Faded blue</option><option value="rose">Blush</option><option value="sage">Sage</option><option value="cream">Warm cream</option></select></label>
+      </div>
+      <button id="clear-data" class="text-button" type="button">Clear saved notes and updates</button>
+    </section>
+
+    <div id="sync-banner" class="sync-banner" hidden aria-live="polite"><span aria-hidden="true">✦</span> Same wavelength — you’re feeling the same way <span aria-hidden="true">✦</span></div>
+    <section class="friends" aria-label="Megan and Andy’s city postcards">
+      <article class="postcard paper-rose" id="card-0">
+        <div class="postcard-top"><span class="postmark">POSTCARD No. 01</span><span class="sun-mark" id="sun-0" aria-hidden="true">☼</span></div>
+        <div class="city-heading"><div><p class="eyebrow">A little window into</p><h2 id="city-name-0">New York</h2></div><div class="weather-window day weather-partly" id="weather-window-0" role="img" aria-label="Weather window is loading">
+          <span class="window-sky" aria-hidden="true"><span class="celestial"></span><span class="sky-cloud cloud-one"></span><span class="sky-cloud cloud-two"></span><span class="rain-drops"><i></i><i></i><i></i></span><span class="snow-drops"><i></i><i></i><i></i><i></i></span><span class="fog-bands"></span><span class="lightning"></span></span>
+        </div></div>
+        <div class="weather-line"><span id="weather-temp-0">—°</span><span id="weather-desc-0">Checking the sky…</span><span class="local-time" id="local-time-0">--:--</span></div>
+        <div class="sky-note" id="sky-note-0">A note from the city</div>
+        <div class="postcard-rule"></div>
+        <div class="friend-heading"><h3><button class="friend-name" id="friend-name-0" type="button" data-tooltip="Say hi! &lt;3">Megan</button></h3><span class="little-heart" aria-hidden="true">♥</span></div>
+        <label class="field-label" for="mood-0">Today I’m feeling</label>
+        <select class="mood-select" id="mood-0"><option>Happy</option><option>Calm</option><option>Cozy</option><option>Upbeat</option><option>Okay</option><option>Tired</option><option>A little down</option></select>
+        <p class="mood-whisper" id="mood-whisper-0"></p>
+        <label class="field-label" for="status-0">A little life update</label>
+        <input class="status-input" id="status-0" maxlength="90" placeholder="At home, out for a walk…">
+        <label class="field-label note-label" for="note-0">Leave a note for Andy</label>
+        <textarea id="note-0" rows="2" maxlength="240" placeholder="A thought to send across the miles…"></textarea>
+        <button class="send-button" id="send-0" type="button">Send a little note <span aria-hidden="true">↗</span></button>
+        <div class="saved-note" id="last-note-0" hidden></div>
+        <p class="poke-count" id="poke-count-0" aria-live="polite">Poked 0 times</p>
+      </article>
+
+      <article class="postcard paper-blue" id="card-1">
+        <div class="postcard-top"><span class="postmark">POSTCARD No. 02</span><span class="sun-mark" id="sun-1" aria-hidden="true">☼</span></div>
+        <div class="city-heading"><div><p class="eyebrow">A little window into</p><h2 id="city-name-1">Chicago</h2></div><div class="weather-window day weather-partly" id="weather-window-1" role="img" aria-label="Weather window is loading">
+          <span class="window-sky" aria-hidden="true"><span class="celestial"></span><span class="sky-cloud cloud-one"></span><span class="sky-cloud cloud-two"></span><span class="rain-drops"><i></i><i></i><i></i></span><span class="snow-drops"><i></i><i></i><i></i><i></i></span><span class="fog-bands"></span><span class="lightning"></span></span>
+        </div></div>
+        <div class="weather-line"><span id="weather-temp-1">—°</span><span id="weather-desc-1">Checking the sky…</span><span class="local-time" id="local-time-1">--:--</span></div>
+        <div class="sky-note" id="sky-note-1">A note from the city</div>
+        <div class="postcard-rule"></div>
+        <div class="friend-heading"><h3><button class="friend-name" id="friend-name-1" type="button" data-tooltip="Say hi! &lt;3">Andy</button></h3><span class="little-heart" aria-hidden="true">♥</span></div>
+        <label class="field-label" for="mood-1">Today I’m feeling</label>
+        <select class="mood-select" id="mood-1"><option>Happy</option><option>Calm</option><option>Cozy</option><option>Upbeat</option><option>Okay</option><option>Tired</option><option>A little down</option></select>
+        <p class="mood-whisper" id="mood-whisper-1"></p>
+        <label class="field-label" for="status-1">A little life update</label>
+        <input class="status-input" id="status-1" maxlength="90" placeholder="At home, out for a walk…">
+        <label class="field-label note-label" for="note-1">Leave a note for Megan</label>
+        <textarea id="note-1" rows="2" maxlength="240" placeholder="A thought to send across the miles…"></textarea>
+        <button class="send-button" id="send-1" type="button">Send a little note <span aria-hidden="true">↗</span></button>
+        <div class="saved-note" id="last-note-1" hidden></div>
+        <p class="poke-count" id="poke-count-1" aria-live="polite">Poked 0 times</p>
+      </article>
+    </section>
+
+    <section class="mailbox" aria-labelledby="mailbox-title"><div class="mailbox-heading"><div><p class="eyebrow">Tucked into the mailbox</p><h2 id="mailbox-title">Recent notes</h2></div><span aria-hidden="true" class="mailbox-flower">✿</span></div><div id="notes-list" class="notes-list"><p class="empty-note">Your little notes will find a home here.</p></div></section>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
